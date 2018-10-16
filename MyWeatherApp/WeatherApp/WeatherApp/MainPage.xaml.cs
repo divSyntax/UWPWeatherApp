@@ -31,16 +31,16 @@ namespace WeatherApp
 
         private async void getMilwaukeeWeather()
         {
-            string input = temp.Text;
+            string input = tempeture.Text;
 
             RootObject rootObject = await WeatherConditions.getWeather(input);
 
-            temp.Text = "City: " +rootObject.name + " Temp: " + Math.Round(rootObject.main.temp);
+            tempeture.Text = "City: " + rootObject.name + " Temp: " + Math.Round(rootObject.main.temp);
 
             foreach (var item in rootObject.weather)
             {
               string icon = String.Format("http://openweathermap.org/img/w/{0}.png", item.icon);//get icon
-              desc.Text = " Description: " + item.description;
+              description.Text = " Description: " + item.description;
               cloud.Source = new BitmapImage(new Uri(icon,UriKind.Absolute));//show icon
             }
         }
